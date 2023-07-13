@@ -9,7 +9,7 @@ Bookflix is an electronic commerce application for movies and electronic books (
 - <b> Canicon, Jan Ambro </b> (jan_canicon@dlsu.edu.ph)
 - <b> Jadie, Joshue Salvador </b> (joshue_jadie@dlsu.edu.ph)
 
-## Deployed Web Application Link (Heroku)
+## [NOT WORKING ANYMORE, please use local setup instead] Deployed Web Application Link (Heroku)
 
 - https://bookflix-p3.herokuapp.com
 
