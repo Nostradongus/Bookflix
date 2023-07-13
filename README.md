@@ -2,7 +2,7 @@
 
 Bookflix is an electronic commerce application for movies and electronic books (e-books). It serves as a web application for users to view, purchase, and review movies and e-books around the world.
 
-<b> Disclaimer: The web application does not really contain the movies and electronic books. The purpose of the web application is to simulate the features coded as part of the project requirement for CCAPDEV. </b>
+<b> Disclaimer: The web application does not really contain movie files and electronic books. The purpose of the web application is to simulate the features coded as part of the project requirements for our DLSU Web Application Development course. </b>
 
 ## Authors
 
