@@ -51,7 +51,7 @@ Below are some of the features that each user can experience while using the web
 1. Clone the repository either by downloading the contents of the repository [here](https://github.com/DLSU-CCAPDEV/2021T2-G02/archive/main.zip), or using the command below (<b>Note: git should be installed in your system for this to work</b>).
 
 ```
-git clone https://github.com/DLSU-CCAPDEV/2021T2-G02.git
+git clone https://github.com/Nostradongus/Bookflix.git
 ```
 
 2. Open command prompt (cmd).
