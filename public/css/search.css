@@ -1,0 +1,45 @@
+#heading {
+	margin: 0px 64px;
+	margin-top: 32px;
+	overflow: visible;
+}
+
+#filter-dropdown {
+	float: right;
+	margin-right: 32px;
+	font-size: 16px;
+}
+
+#filter-dropdown select,option {
+	background-color: #333333;
+	border: 1px solid #555555;
+	color: white;
+}
+
+#item-image {
+	width: 64px;
+	height: 94px;
+	float: left;
+	object-fit: cover;
+	display: block;
+}
+
+#user-image {
+	width: 64px;
+	height: 64px;
+	float: left;
+	object-fit: cover;
+	display: block;
+}
+
+#information {
+	font-size: 16px;
+	line-height: 20px;
+	margin: 0px;
+	margin-left: 80px;
+	font-family: 'Bebas Neue Pro';
+}
+
+.box-dark a {
+	margin-left: 16px;
+}

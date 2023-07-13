@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- title of webpage -->
+        <title> Bookflix </title>
+
+        <!-- meta information -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- tab icon -->
+        <link rel="icon" type="image/png" href="/public/images/icons/tab-icon.png">
+
+        <!-- css files -->
+        <link rel="stylesheet" type="text/css" href="/public/css/style1.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/hover-effects.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/style2.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/user.css">
+
+        <!-- Font Awesome icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+        <!-- Bootstrap library -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- BY ORDER OF FUNCTIONING -->
+        <!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Popper.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        
+        <!-- Bootstrap JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </head>
+
+    <body class="main-body">
+        <!-- navigation bar (partials) -->
+        {{> topbar user=user_info cart_items=cart tPrice=totalPrice}}
+        <!-- left menu (genre buttons and filter) -->
+        {{> leftbar}}
+        
+        <!-- page content -->
+        <div id="page-contents">
+			<div class="h-spacer"></div>
+			<!-- User details -->
+			{{#with user}}
+				<div class="padded">
+					<div id="profile-pic">
+						<img src="{{img}}">
+					</div>
+					<div id="user-description">
+						<div class="title-break">
+							<span style="font-family: 'Bebas Neue Pro'">{{displayname}}</span>
+							{{#if ../self}}
+								<a id="edit-button" href="{{lookup ../user_info 'username'}}/edit">Edit profile</a>
+							{{/if}}
+						</div>
+						
+						<div id="information">
+							<span id="first-name">{{firstname}}</span>
+							<span id="last-name">{{lastname}}</span><br>
+							<span id="birth-date">Born {{birthdate}}</span><br>
+							<span id="join-date">Joined {{joindate}}</span>
+						</div>
+					</div>
+				</div>
+			{{/with}}
+			
+			<div class="h-spacer" style="clear: left"></div>
+			
+			<!-- Profile interaction -->
+			<div class="padded">
+				<!-- For selecting list filter -->
+				{{#if self}}
+					<div id="filters">
+						<div class="filter-toggle clickable noselect">Reviewed Items</div>
+						<div class="filter-toggle clickable noselect">Favorite Items</div>
+						<div class="filter-toggle clickable noselect">Transaction History</div>
+					</div>
+				{{else}}
+					<div class="title-break" style="font-size: 24px">Reviews</div>
+				{{/if}}
+				
+				<div id="entries">
+					<!-- Reviewed items -->
+					{{#each reviews}}
+						<div class="review box-dark clearfix">
+							<img class="item-image" src="{{img}}">
+							<div class="details">
+								<h4><a href="/item/{{id}}">{{title}}</a></h4>
+								<!-- Formatting in following line will be copied over to rendering -->
+								<p class="item-desc">{{rating}}/5 stars<br>{{{review}}}
+								</p>
+							</div>
+						</div>
+					{{/each}}
+					{{#unless reviews}}
+						<div class="review placeholder" style="margin-top: 16px; text-align: center; font-size: 24px">
+							No items have been given a review.
+						</div>
+					{{/unless}}
+
+					{{#if self}}
+						<!-- Favorite items -->
+						{{#each favorites}}
+							<div class="favorite box-dark clearfix">
+								<img class="item-image" src="{{img}}">
+								<div class="details">
+									<h4><a href="/item/{{id}}">{{title}}</a></h4>
+									<!-- Formatting in following line will be copied over to rendering -->
+									<p class="item-desc">{{type}}<br>{{avgrate}}/5.0 ({{reviews}} Reviews)<br>{{favorites}} Favorites</p>
+								</div>
+							</div>
+						{{/each}}
+						{{#unless favorites}}
+							<div class="favorite placeholder" style="margin-top: 16px; text-align: center; font-size: 24px">
+								No items have been added to favorites.
+							</div>
+						{{/unless}}
+						
+						<!-- Transaction history -->
+						{{#each owned}}
+							<div class="transaction box-dark clearfix">
+								<img class="item-image" src="{{img}}">
+								<div class="details">
+									<h4><a href="/item/{{id}}">{{title}}</a></h4>
+									<!-- Formatting in following line will be copied over to rendering -->
+									<p class="item-desc">{{type}}<br>₱ {{price}}<br>Purchased {{purchasedate}}
+									</p>
+								</div>
+							</div>
+						{{/each}}
+						{{#unless owned}}
+							<div class="transaction placeholder" style="margin-top: 16px; text-align: center; font-size: 24px">
+								No items have been purchased.
+							</div>
+						{{/unless}}
+					{{/if}}
+				</div>
+			</div>
+        </div>
+		
+		<div class="h-spacer"></div>
+		
+		<!-- Local javascript -->
+    	<script type="text/javascript" src="/public/js/script.js"></script>
+		{{#if user_info}}
+			<script type="text/javascript" src="/public/js/user.js"></script>
+		{{/if}}
+		<script type="text/javascript" src="/public/js/login.js"></script>
+		<script type="text/javascript" src="/public/js/cart.js"></script>
+    </body>
+</html>

@@ -1,0 +1,706 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* Imports lowercase Bebas Neue from file */
+@font-face {
+	font-family: "Bebas Neue Pro";
+	src: url('../fonts/Bebas Neue Pro Regular.otf');
+}
+
+.main-body { /* for body element */
+    width: 100%;
+    height: 100%; 
+    background-color: black;
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    overflow: overlay;
+}
+
+/* web application's scrollbar */
+::-webkit-scrollbar {
+    width: 8px;           
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent, white);
+    border-radius: 6px;            
+}
+
+.h-spacer { /* for adding horizontal space between elements */
+    width: 100%;
+    height: 80px;
+}
+
+#top-menu { /* id for navigation bar at top of the page */
+    position: relative; 
+    padding-top: 3px;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100%;
+    display: flex; 
+    background-color: black;
+    border: 1.5px solid white;
+    z-index: 9; /* to not be behind content divs */
+    
+    /* place on top of page */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#nav-title { /* id for nav bar title */
+    position: relative;
+    font-weight: bolder;
+    font-size: 50px;
+    letter-spacing: 5px;
+    text-decoration: none;
+    color: white;
+    width: 15.5%;
+    display: flex;
+}
+
+#nav-icon { /* id for nav bar title icon */
+    margin-right: 8px;
+    margin-top: 13px;
+}
+
+#nav-links { /* id for nav links */
+    position: relative;
+    align-content: center;
+    display: flex; 
+    width: 34.5%; 
+    margin-left: 3.5%;
+}
+
+#nav-links button {
+    outline: none; 
+}
+
+.nav-link { /* text style for nav links */
+    position: relative;
+    text-decoration: none;
+    color: white;
+    background-color: transparent; 
+    border: 0px;
+    font-size: 23px;
+    font-weight: bolder;
+}
+
+.nav-link:hover { /* hover effect for nav links */
+    color: white;
+}
+
+form#nav-search-bar {
+    position: relative;
+    margin-top: 17px; 
+    font-size: 23px;
+    word-spacing: 3px; 
+    width: 28.5%;
+}
+
+form#nav-search-bar input[type=text] { /* id for search bar (form) */
+    position: relative;
+    align-content: center; 
+    display: inline-block;  
+    font-weight: bolder;
+    font-family: "Bebas Neue Pro";
+    border: 2px solid gray;
+    background-color: white;
+    color: black; 
+    cursor: pointer; 
+    width: 85%;
+}
+
+::placeholder { /* for placeholder color (Chrome, Firefox, Opera, Safari) */
+    color: gray; 
+    font-weight: 300;
+    opacity: 1; /* specifically for Firefox */
+}
+
+:-ms-input-placeholder { /* for placeholder color (Internet Explorer) */
+    color: gray;
+    font-weight: 300;
+}
+
+::-ms-input-placeholder { /* for placeholder color (Microsoft Edge) */
+    color: gray;
+    font-weight: 300;
+}
+
+#nav-right { /* id for navigation bar contents on the right: login/register, profile, shopping cart */
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    width: 18.5%;
+    margin-top: 3px;
+    padding-right: 3px;
+}
+
+#sign-in-btn {
+    background-color: black;
+    border: 2px solid white; 
+    align-content: center;
+    color: white; 
+    word-spacing: 3px;
+    font-size: 23px;
+    font-weight: bolder;
+    margin-top: 15px;  
+    position: relative; 
+    height: 55%;
+    padding-left: 15px; 
+    padding-right: 15px; 
+    text-decoration: none;
+}
+
+#sign-in-btn a {
+    text-decoration: none;
+    outline: none; 
+    color: white;
+}
+
+#sign-in-btn a:hover {
+    text-decoration: none;
+    outline: none; 
+    color: white;
+}
+
+#log-form {
+    background-color: black; 
+    color: white; 
+    border: 2px solid white;
+    padding: 5px;
+    font-size: 23px;
+}
+
+#log-form input[type=text] {
+    position: relative;
+    width: 95%;
+    font-family: "Bebas Neue Pro";
+    font-weight: bolder;
+}
+
+.log-button {
+    margin-left: 15px;
+    background-color: black; 
+    color: white; 
+    border: 2px solid white;
+}
+
+#login-btn {
+    margin-left: 34%;
+    margin-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#login-btn:hover {
+    text-decoration: none; 
+    color: white;
+}
+
+#reg-btn {
+    margin-left: 5px; 
+    padding-left: 10px; 
+    padding-right: 10px;
+}
+
+#reg-btn:hover {
+    text-decoration: none; 
+    color: white;
+}
+
+#account-drop-btn {
+    border: 0px;
+    outline: none; 
+    background-color: black;
+    align-content: center;
+    color: white; 
+    word-spacing: 3px;
+    font-size: 23px;
+    font-weight: bolder;
+    margin-top: 17px;
+}
+
+#account-btns {
+    background-color: black; 
+    font-size: 25px;
+    width: 130px;
+    height: 130px;
+    text-align: center; 
+}
+
+.account-btn {
+    position: relative; 
+    width: 100%;
+    border: 2px solid white; 
+    color: white; 
+    background-color: black;
+}
+
+.account-btn:hover {
+    color: white; 
+    text-decoration: none;
+}
+
+#cart-icon {
+    font-size: 25px;
+    margin-right: 20px;
+    border: 0px; 
+    background-color: transparent;
+    outline: none;
+    color: white;
+}
+
+#cart-modal {
+    background-color: black; 
+    font-weight: bolder;
+    border: 3px solid white; 
+    color: white;
+}
+
+#cart-modal button {
+    outline: none;
+}
+
+#cart-modal-header {
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+/* to make modal body scrollable when overflow happens */
+.modal-dialog {
+    overflow-y: initial !important
+}
+.modal-body {
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    position: relative; 
+    width: 100%; 
+    height: 100px; 
+    padding: 5px; 
+    margin-bottom: 15px;
+}
+
+.cart-item-left {
+    position: relative; 
+    width: 15%; 
+    height: 100%; 
+    border: 1px solid white; 
+}
+
+.cart-item-mid {
+    position: relative;
+    width: 60%;
+    height: 100%; 
+    font-weight: bolder; 
+    margin-left: 13px;
+    margin-top: 9px;
+}
+
+.cart-item-right {
+    position: relative; 
+    width: 25%; 
+    height: 100%; 
+    text-align: right; 
+    font-weight: bolder; 
+    margin-top: 7px;
+}
+
+.cart-item-btn {
+    background-color: black; 
+    font-weight: bolder; 
+    color: white; 
+    border: 2px solid white; 
+    padding-top: 1px; 
+    padding-bottom: 1px; 
+    padding-left: 5px; 
+    padding-right: 5px;
+    font-size: 20px;
+    margin-top: -2px;
+}
+
+.cart-modal-bot {
+    justify-content: center; 
+}
+
+#cart-total-price {
+    text-align: left;
+    margin-top: 11px; 
+    margin-right: 10px;
+}
+
+.close-btn {
+    color: white; 
+    font-size: 30px;
+    font-weight: bolder;
+    margin-top: 20px;
+    margin-right: 8px;
+}
+
+#checkout-btn {
+    font-size: 20px; 
+    color: white; 
+    padding: 7px; 
+    border: 3px solid white; 
+}
+
+#checkout-btn:hover {
+    color: white;
+    text-decoration: none; 
+}
+
+#left-menu { /* id for accordion */
+    position: fixed;
+    width: 15%;
+    height: 100%;
+    margin-top: 0.1%;
+    left: 0; 
+    background-color: black;
+    border: 1px solid white;
+    border-top: 0px;
+    z-index: 9;
+}
+
+#acc-title {
+    font-weight: bolder; 
+    font-size: 35px; 
+    color: white; 
+    text-align: center;
+    padding: 5px;
+    margin-bottom: -3px;
+}
+
+.acc-text {
+    font-weight: bolder; 
+    font-size: 25px;
+    color: white;
+}
+
+.acc-button {
+    background-color: black; 
+    width: 100%;
+    border: 1.5px solid white;
+    word-spacing: 3px;
+    transition: 0.4s;
+    outline: none;
+    align-content: center;
+}
+
+.acc-panel {
+    width: 100%; 
+    background-color: black; 
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease-out;
+}
+
+.genre-button {
+    background-color: white; 
+    text-align: center; 
+    width: 100%;
+    border-left: 2.5px; 
+    border-right: 2.5px; 
+    border-top: 1.5px; 
+    border-bottom: 1.5px; 
+    border-style: solid;
+    border-color: black; 
+    word-spacing: 3px; 
+}
+
+.genre-button:hover {
+    outline: none;
+    text-decoration: none; 
+    color: black;
+}
+
+.genre-text {
+    font-weight: bolder; 
+    font-size: 20px;
+    color: black;
+}
+
+#page-contents {
+    position: relative;
+    margin-left: 15%;
+    width: 85%; 
+    height: 100%; 
+    background-color: black;
+}
+
+#bf-carousel {
+    position: relative; 
+    width: 100%; 
+    height: 100%;
+}
+
+.carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);    
+    bottom: initial;
+}
+
+.carousel-item {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.carousel-bg {
+    position: relative;
+    width: 100%; 
+    height: 100%; 
+    background-color: black;
+}
+
+.carousel-img {
+    position: relative;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100vh;
+    max-width: 100vh;
+    object-fit: cover;
+}
+
+.carousel-text {
+    font-weight: bolder;
+    font-size: 105px;
+    letter-spacing: 10px;
+    color: white;
+}
+
+.carousel-subtext {
+    font-weight: bolder;
+    font-size: 60px;
+    color: white;
+}
+
+.content-header {
+    position: fixed; 
+    z-index: 8;
+    width: 100%; 
+    color: white; 
+    background-color: black;  
+    font-size: 60px;
+    text-align: center;
+    border-bottom: 2px solid white;
+}
+
+.content-spacer {
+    width: 100%;
+    height: 110px;
+}
+
+.content-header-title {
+    font-size: 50px; 
+    margin-top: 11px;
+    margin-right: 200px;
+    font-weight: bolder;
+}
+
+.list-item-container { /* for a single item in the list */
+    position: relative; 
+    width: 300px;  
+    height: 400px;
+    color: white; 
+    font-weight: bolder; 
+    margin-left: 14px;
+    margin-bottom: 30px;
+    margin-top: -10px;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.list-item-container a {
+    text-decoration: none; 
+    color: white; 
+}
+
+.list-item-container a:hover {
+    outline: none; 
+    color: white;
+}
+
+.list-item-text { /* text for list item (book or movie) */
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.flip-card {
+    position: relative;
+    background-color: transparent;
+    width: 80%;
+    height: 80%;
+    margin-left: 25px;
+    margin-bottom: 5px;
+    perspective: 1000px; 
+    border: 3px dashed white;
+}
+
+.flip-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* safari */
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #1c1c1c;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: black;
+    transform: rotateY(180deg);
+    padding: 10px;
+}
+
+.flip-card-text {
+    font-size: 35px;
+    word-spacing: 10px;
+    font-weight: bolder;
+}
+
+.view-details-btn {
+    background-color: black; 
+    border: 2px solid white; 
+    font-weight: bolder;
+    text-decoration: none; 
+    color: white;
+    font-size: 25px; 
+    padding: 5px;
+    width: 150px;
+}
+
+.view-details-btn:hover {
+    color: white;
+}
+
+/* for checkout */
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: black;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+span.price {
+  float: right;
+  color: white;
+}
+
+#confirm-checkout {
+    border: 3px solid white; 
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 25px; 
+    color: white; 
+    padding: 5px; 
+    margin-left: 40%;
+    background-color: black;
+}
+
+#confirm-checkout:hover {
+    text-decoration: none; 
+    color: white;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+
+/* clearfix */
+.clearfix {
+  overflow: auto;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}

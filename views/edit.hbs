@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- meta information -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- title of webpage -->
+    <title> Bookflix </title>
+
+    <!-- webpage tab icon -->
+    <link rel="icon" type="image/png" href="/public/images/icons/tab-icon.png">
+
+    <!-- css files -->
+    <link rel="stylesheet" type="text/css" href="/public/css/style1.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/hover-effects.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style2.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/register.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/edit.css">
+
+    <!-- Font Awesome icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap library -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="main-body">
+    <!-- navigation bar (partials) -->
+    {{> topbar user=user_info cart_items=cart tPrice=totalPrice}}
+    <!-- left menu (genre buttons and filter) -->
+    {{> leftbar}}
+    <!-- main page contents -->
+    <div id="page-contents">
+        <div class="h-spacer"></div>
+        <div id="reg-box">
+            <div class="title-break">Edit Profile</div>
+            <form method="POST" action="/user/{{lookup user_info 'username'}}/update" id="registration" name="registration" enctype="multipart/form-data" autocomplete="off">
+                {{#with user}}
+                    <label>Current Profile Picture</label>
+                    <img id="profile-pic" src="{{img}}">
+                    <p> <!-- blank for space only --> </p>
+
+                    <label for="profilepic">Profile Picture</label>
+                    <input type="file" id="profilepic" name="profilepic" accept="image/*">
+                    <p> <!-- blank for space only --> </p>
+                
+                    <label for="fName">First Name</label>
+                    <input type="text" id="fName" name="fName" value="{{firstname}}">
+                    <p id="fNameError" style="color: rgb(228, 61, 61)"> {{../details.fNameError}} </p>
+                
+                    <label for="lName">Last Name</label>
+                    <input type="text" id="lName" name="lName" value="{{lastname}}">
+                    <p id="lNameError" style="color: rgb(228, 61, 61)"> {{../details.lNameError}} </p>
+                
+                    <label for="bDate">Date of Birth</label>
+                    <input type="date" id="bDate" name="bDate" max="2007-12-31" style="font-family: 'Bebas Neue'" value="{{birthdate}}">
+                    <p id="bDateError" style="color: rgb(228, 61, 61)"> {{../details.bDateError}} </p>
+
+                    <label for="uName">Username</label>
+                    <input type="text" id="uName" name="uName" value="{{username}}">
+                    <p id="uNameError" style="color: rgb(228, 61, 61)"> {{../details.uNameError}} </p>
+                    
+                    <label for="pWord">Password</label>
+                    <input type="password" id="pWord" name="pWord" placeholder="Input new or current password to confirm information">
+                    <p id="pWordError" style="color: rgb(228, 61, 61)"> {{../details.pWordError}} </p>
+                    
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" value="{{email}}">
+                    <p id="emailError" style="color: rgb(228, 61, 61)"> {{../details.emailError}} </p>
+                {{/with}}
+
+                <div style="text-align: center">
+                    <button id="submit" type="submit" class="clickable" style="width: 64px"> SUBMIT </button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="h-spacer"></div>
+
+        <form id="delete-confirm" method="post" action="/user/{{lookup user 'username'}}/delete">
+            <span id="ref-username" class="hidden">{{lookup user 'username'}}</span>
+            <div class="title-break">Delete Account</div>
+            
+            <label for="username_confirm">Confirm Username</label>
+            <input type="text" id="username-confirm" name="username_confirm" autocomplete="off"><br>
+
+            <label for="password_confirm">Confirm Password</label>
+            <input type="password" id="password-confirm" name="password_confirm" autocomplete="off">
+
+            <div style="text-align: center">
+                <input type="submit" id="delete-button" value="Confirm" class="clickable-disabled noselect" disabled="true">
+            </div>
+        </form>
+
+        <div class="h-spacer"></div>
+    </div>
+
+    <!-- external javascript -->
+    <script type="text/javascript" src="/public/js/script.js"></script>
+    <script type="text/javascript" src="/public/js/edit.js"></script>
+    <script type="text/javascript" src="/public/js/cart.js"></script>
+</body>
+
+</html>

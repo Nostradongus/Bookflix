@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- meta information -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- title of webpage -->
+    <title> Bookflix </title>
+
+    <!-- webpage tab icon -->
+    <link rel="icon" type="image/png" href="/public/images/icons/tab-icon.png">
+
+    <!-- css files -->
+    <link rel="stylesheet" type="text/css" href="/public/css/style1.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/hover-effects.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style2.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/delete-confirmation.css">
+
+    <!-- Font Awesome icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap library -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    
+    <!-- for checkout text input only -->
+    <style>
+        /* Imports lowercase Bebas Neue from file */
+        @font-face {
+            font-family: "Bebas Neue Pro";
+            src: url('../public/fonts/Bebas Neue Pro Regular.otf');
+        }
+        #page-contents input[type] {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 2px solid white;
+            border-radius: 3px;
+            font-family: 'Bebas Neue Pro';
+        }
+    </style>
+</head>
+
+<body class="main-body">
+    <!-- navigation bar (partials) -->
+    {{> topbar user=user_info cart_items=cart tPrice=totalPrice}}
+    <!-- left menu (genre buttons and filter) -->
+    {{> leftbar}}
+    <!-- main page contents -->
+    <div id="page-contents">
+        {{#if checkoutSuccess}}
+            <div class="h-spacer"></div>
+            <div class="noselect" id="page-title">
+                <img id="nav-icon" src="/public/images/icons/title-icon.png" width="96px" height="96px">Bookflix
+            </div>
+            
+            <div id="notice">
+                Thank you for buying! You have now owned the items, please check your email to download the items. 
+            </div>
+            
+            <a href="/" style="text-decoration: none">
+                <div id="home-button" class="clickable noselect">Return to main page</div>
+            </a>
+        {{else}}
+            <div class="row">
+                <div class="col-75">
+                    <div class="container">
+                        <form method="POST" id="checkout-form" action="/checkout">
+                            <div class="row">
+                                <div class="col-50">
+                                    <h3>Billing Address</h3>
+                                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                                    <input type="text" id="fname" name="fname" value="{{fname}}">
+                                    <p id="fnameError" style="color: rgb(228, 61, 61)"> {{fnameError}} </p>
+
+                                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                                    <input type="email" id="email" name="email" value="{{email}}">
+                                    <p id="emailError" style="color: rgb(228, 61, 61)"> {{emailError}} </p>
+
+                                    <label for="address"><i class="fa fa-address-card-o"></i> Address</label>
+                                    <input type="text" id="address" name="address" value="{{address}}">
+                                    <p id="addressError" style="color: rgb(228, 61, 61)"> {{addressError}} </p>
+
+                                    <label for="city"><i class="fa fa-institution"></i> City</label>
+                                    <input type="text" id="city" name="city" value="{{city}}">
+                                    <p id="cityError" style="color: rgb(228, 61, 61)"> {{cityError}} </p>
+            
+                                    <div class="row">
+                                        <div class="col-50">
+                                            <label for="state">State</label>
+                                            <input type="text" id="state" name="state" value="{{state}}">
+                                            <p id="stateError" style="color: rgb(228, 61, 61)"> {{stateError}} </p>
+                                        </div>
+                                        <div class="col-50">
+                                            <label for="zip">Zip</label>
+                                            <input type="text" id="zip" name="zip" value="{{zip}}">
+                                            <p id="zipError" style="color: rgb(228, 61, 61)"> {{zipError}} </p>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="col-50">
+                                    <h3>Payment</h3>
+                                    <label for="fname">Accepted Cards</label>
+                                    <div class="icon-container">
+                                        <i class="fa fa-cc-visa" style="color:white;"></i>
+                                        <i class="fa fa-cc-amex" style="color:white;"></i>
+                                        <i class="fa fa-cc-mastercard" style="color:white;"></i>
+                                        <i class="fa fa-cc-discover" style="color:white;"></i>
+                                    </div>
+                                    <label for="cname">Name on Card</label>
+                                    <input type="text" id="cname" name="cname" value="{{cname}}">
+                                    <p id="cnameError" style="color: rgb(228, 61, 61)"> {{cnameError}} </p>
+                                    <label for="ccnum">Credit card number</label>
+                                    <input id="ccnum" name="ccnum" type="text" value="{{ccnum}}"
+                                        pattern="[0-9\s]{13,19}" maxlength="16" inputmode="numeric" placeholder="XXXXXXXXXXXXXXXX">
+                                    <p id="ccnumError" style="color: rgb(228, 61, 61)"> {{ccnumError}} </p>
+                                    <label for="expmonth">Exp Month</label>
+                                    <input type="number" id="expmonth" name="expmonth" min="0" max="12" placeholder="9, 12, etc." value="{{expmonth}}">
+                                    <p id="expmonthError" style="color: rgb(228, 61, 61)"> {{expmonthError}} </p>
+            
+                                    <div class="row">
+                                        <div class="col-50">
+                                            <label for="expyear">Exp Year</label>
+                                            <input type="text" id="expyear" name="expyear" placeholder="2021, 2024, etc." value="{{expyear}}">
+                                            <p id="expyearError" style="color: rgb(228, 61, 61)"> {{expyearError}} </p>
+                                        </div>
+                                        <div class="col-50">
+                                            <label for="cvv">CVV</label>
+                                            <input type="text" id="cvv" name="cvv" value="{{cvv}}">
+                                            <p id="cvvError" style="color: rgb(228, 61, 61)"> {{cvvError}} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" id="confirm-checkout" class="hvr-border-fade" style="cursor: pointer"> Confirm Checkout </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- list of cart items -->
+                <div class="col-25">
+                    <div id="price-container" class="container">
+                        <h4>Cart
+                            <span class="price" style="color:black">
+                                <i class="fa fa-shopping-cart"></i>
+                                <b>4</b>
+                            </span>
+                        </h4>
+                        {{#each cart}}
+                            <p> {{title}} <span class="price">₱ {{price}}</span></p>
+                        {{/each}}
+                        <hr>
+                        {{#if totalPrice}}
+                            <p>Total <span id="total-price" class="price"><b>₱ {{totalPrice}}</b></span></p>
+                        {{else}}
+                            <p>Total <span id="total-price" class="price"><b>₱ 000.00</b></span></p>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+
+    <!-- external javascript -->
+    <script type="text/javascript" src="/public/js/script.js"></script>
+    <script type="text/javascript" src="/public/js/login.js"></script>
+    <script type="text/javascript" src="/public/js/checkout.js"></script>
+    <script type="text/javascript" src="/public/js/cart.js"></script>
+</body>
+
+</html>

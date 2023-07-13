@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- meta information -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- title of webpage -->
+    <title> Bookflix </title>
+
+    <!-- webpage tab icon -->
+    <link rel="icon" type="image/png" href="/public/images/icons/tab-icon.png">
+
+    <!-- css files -->
+    <link rel="stylesheet" type="text/css" href="/public/css/style1.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/hover-effects.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style2.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/delete-confirmation.css">
+
+    <!-- Font Awesome icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap library -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="main-body">
+    <!-- navigation bar (partials) -->
+    {{> topbar user=user_info cart_items=cart tPrice=totalPrice}}
+    <!-- left menu (genre buttons and filter) -->
+    {{> leftbar}}
+    <!-- main page contents -->
+    <div id="page-contents">
+        {{#if items}}
+            <!-- content header -->
+            <div class="content-header">
+                <h1 class="content-header-title hvr-float-shadow"> {{content_header}} </h1>
+            </div>
+            <!-- horizontal spacer -->
+            <div class="content-spacer"> &nbsp; </div>
+            <!-- item list -->
+            <div class="d-flex flex-wrap justify-content-start">
+                {{#each items}}
+                    <div class="list-item-container">
+                        {{#if type}}
+                            <h1 class="list-item-text"> {{type}} </h1>
+                        {{/if}}
+                        <a href="/item/{{id}}">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="flip-image" src="{{img}}">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <p class="flip-card-text"> ₱ {{price}} </p>
+                                        <p class="flip-card-text">
+                                            <i class="fa fa-star"></i>
+                                            {{avgrate}}
+                                        </p>
+                                        <p class="flip-card-text">
+                                            <i class="fa fa-heart"></i>
+                                            {{favorites}}
+                                        </p>
+                                        <p style="font-size: 25px; font-weight: bolder"> Click to view details </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <p class="list-item-text"> {{title}} </p>
+                    </div>
+                {{/each}}
+            </div>
+        {{else}}
+            <div class="h-spacer"></div>
+            <div class="noselect" id="page-title">
+                <img id="nav-icon" src="/public/images/icons/title-icon.png" width="96px" height="96px">Bookflix
+            </div>
+            
+            <div id="notice">
+                You currently have no favorite items, try browsing our popular items!
+            </div>
+            
+            <a href="/list_browse/popular" style="text-decoration: none">
+                <div id="home-button" class="clickable noselect">Browse popular items</div>
+            </a>
+        {{/if}}
+    </div>
+
+    <!-- external javascript -->
+    <script type="text/javascript" src="/public/js/script.js"></script>
+    <script type="text/javascript" src="/public/js/login.js"></script>
+    <script type="text/javascript" src="/public/js/cart.js"></script>
+</body>
+
+</html>

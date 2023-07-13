@@ -1,0 +1,25 @@
+#page-title {
+	text-align: center;
+	font-size: 128px;
+	line-height: 1;
+	letter-spacing: 8px;
+	font-weight: bolder;
+}
+
+#notice {
+	margin: 0px;
+	margin-top: 48px;
+	font-family: 'Bebas Neue Pro';
+	font-size: 24px;
+	text-align: center;
+	font-weight: bolder;
+	letter-spacing: 3px;
+}
+
+#home-button {
+	width: 192px;
+	margin: auto;
+	margin-top: 32px;
+	font-family: 'Bebas Neue';
+	font-size: 24px;
+}

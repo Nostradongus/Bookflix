@@ -1,0 +1,66 @@
+@font-face {
+	font-family: "Bebas Neue Pro";
+	src: url('../fonts/Bebas Neue Pro Regular.otf');
+}
+
+.padded {
+	padding: 0px 96px;
+}
+
+.title {
+	border-bottom: 2px solid #AAAAAA;
+	font-size: 32px;
+	letter-spacing: 1px;
+	line-height: 1;
+}
+
+.heading {
+	margin: 0px 64px;
+	margin-top: 32px;
+}
+
+.padded-box {
+	width: 100%;
+	padding: 16px;
+	background-color: #111111;
+	border: 2px solid #333333;
+	margin: 4px 0px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#profile-image {
+	width: 64px;
+	height: 64px;
+	float: left;
+	object-fit: cover;
+	display: block;
+}
+
+#information {
+	font-size: 16px;
+	line-height: 20px;
+	margin: 0px;
+	margin-left: 80px;
+	font-family: 'Bebas Neue Pro';
+}
+
+.custom-link {
+	color: white;
+}
+
+.custom-link:hover {
+	color: white;
+}
+
+.custom-link:visited {
+	color: white;
+}
+
+.padded-box a {
+	margin-left: 16px;
+}

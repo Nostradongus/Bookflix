@@ -1,0 +1,110 @@
+/* Imports lowercase Bebas Neue from file */
+@font-face {
+	font-family: "Bebas Neue Pro";
+	src: url('../fonts/Bebas Neue Pro Regular.otf');
+}
+
+/* Prevents text from being highlighted */
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+div a {
+	color: white;
+}
+
+div a:hover {
+	color: white;
+}
+
+/* Fixes formatting after using floating elements */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.padded {
+	padding: 0px 96px;
+}
+
+.title-break {
+	margin-bottom: 16px;
+	border-bottom: 2px solid #AAAAAA;
+	font-size: 32px;
+	letter-spacing: 1px;
+	line-height: 1;
+}
+
+.clickable {
+	background-color: #222222;
+	border: 1px solid #555555;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+.clickable-a {
+	background-color: #222222;
+	border: 1px solid #555555;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+	margin-right: 10px;
+	text-decoration: none; 
+	outline: none; 
+	padding-top: 2.5px; 
+	padding-bottom: 2.5px; 
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.clickable-a:hover {
+	text-decoration: none; 
+	outline: none; 
+	color: white;
+	background-color: #333333;
+}
+
+.clickable:hover {
+	background-color: #333333;
+}
+
+.clickable:active {
+	background-color: #888888;
+}
+
+.clickable-disabled {
+	background-color: #222222;
+	border: 1px solid #555555;
+	text-align: center;
+	color: #555555;
+	margin-right: 10px;
+}
+
+.box-dark {
+	width: 100%;
+	padding: 16px;
+	background-color: #111111;
+	border: 2px solid #555555;
+	margin: 4px 0px;
+}
+
+.box-light {
+	width: 100%;
+	padding: 16px;
+	background-color: #222222;
+	border: 2px solid #555555;
+	margin: 4px 0px;
+}
+
+.hidden {
+	display: none;
+}

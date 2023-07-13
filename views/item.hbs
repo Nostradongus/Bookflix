@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- title of webpage -->
+        <title> Bookflix </title>
+
+        <!-- meta information -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- tab icon -->
+        <link rel="icon" type="image/png" href="/public/images/icons/tab-icon.png">
+
+        <!-- css files -->
+        <link rel="stylesheet" type="text/css" href="/public/css/style1.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/hover-effects.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/style2.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/item.css">
+
+        <!-- Font Awesome icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+        <!-- Bootstrap library -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- BY ORDER OF FUNCTIONING -->
+        <!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Popper.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        
+        <!-- Bootstrap JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </head>
+
+    <body class="main-body">
+    <!-- navigation bar (partials) -->
+    {{> topbar user=user_info cart_items=cart tPrice=totalPrice}}
+    <!-- left menu (genre buttons and filter) -->
+    {{> leftbar}}
+        <!-- Page contents -->
+        <div id="page-contents">
+			<div class="h-spacer"></div>
+			<!-- Item listing -->
+			{{#with item}}
+	            <section id="item-listing" class="padded clearfix">
+					<!-- Item image -->
+					<div id="item-left">
+						<img src="{{img}}">
+						<!-- If page is viewed as user -->
+						{{#if ../user_info}}
+							<!-- favorite item button -->
+								<div id="favorite" class="clickable item-button noselect">
+									{{#if ../favorite}}
+										<span class="fa fa-heart"> </span> 
+										<span>Unfavorite</span>
+									{{else}}
+										<span class="fa fa-heart-o"> </span> 
+										<span>Favorite</span>
+									{{/if}}
+								</div>
+
+							<!-- Cart buttons -->
+							{{#if ../owned}}
+								<!-- Item is owned -->
+								<div id="cart" class="clickable-disabled item-button noselect"> 
+									Item already owned
+								</div>
+							{{else}}
+								<!-- add to cart / remove from cart div button -->
+								{{#if ../addedToCart}}
+									{{!-- <a href="{{../id}}/deletefromcart"> --}}
+									<button id="remove-{{../id}}" class="cart-btn clickable item-button noselect">
+										<span class="fa fa-shopping-cart"> </span>
+										Remove from Cart
+									</button>
+									{{!-- </a> --}}
+								{{else}}
+									{{!-- <a href="{{../id}}/addtocart"> --}}
+									<button id="add-{{../id}}" class="cart-btn clickable item-button noselect">
+										<span class="fa fa-shopping-cart"> </span> 
+										Add to Cart
+									</button>
+									{{!-- </a> --}}
+								{{/if}}
+							{{/if}}
+						<!-- If page is viewed as a guest -->
+						{{else}}
+							<div id="x-favorite" class="clickable-disabled item-button noselect">
+								<span class="fa fa-heart-o"> </span> 
+								<span>Favorite</span>
+							</div>
+							<div id="x-cart" class="clickable-disabled item-button noselect">
+								<span class="fa fa-shopping-cart"> </span> 
+								Add to Cart
+							</div>
+						{{/if}}
+					</div>
+					
+					<!-- Item details -->
+					<div id="item-right">
+						<span id="itemid" style="display: none">{{id}}</span>
+						<span id="name">{{title}}</span><br>
+						<span id="item-price">₱ {{price}}</span>
+						<div id="information">
+							<span id="type">{{type}}</span>
+							{{genres}}
+							<span id="rating">{{avgrate}}/5.00 ({{reviews}} Reviews)</span>
+							<span id="favorites">{{favorites}} Favorites</span>
+						</div>
+						<p id="summary">
+							{{summary}}
+						</p>
+					</div>
+				</section>
+			{{/with}}
+			
+			<div class="h-spacer" style="height: 32px"></div>
+			
+			<!-- Item reviews -->
+			<section class="padded">
+				<h1 class="title-break">User Reviews</h1>
+				
+				{{#if user_info}}
+					{{#if owned}}
+						<!-- Review from own user -->
+						<div id="session-review-box">
+							<div class="box-light">
+								<span style="font-size: 24px">Your Review</span>
+								
+								<!-- If session owner has not given a review -->
+								{{#if session_review}}
+									<a href="javascript:open_edit()" id="toggle-edit">Edit</a>
+								{{/if}}
+
+								<div id="session-review-area">
+									<!-- If session owner has not given a review -->
+									{{#if session_review}}
+										<span id="session-rating" class="hidden">{{lookup session_review 'rating'}}</span>
+										<div id="session-stars" class="stars noselect">
+											<span class="fa fa-star unchecked"></span>
+											<span class="fa fa-star unchecked"></span>
+											<span class="fa fa-star unchecked"></span>
+											<span class="fa fa-star unchecked"></span>
+											<span class="fa fa-star unchecked"></span>
+											<span id="toggle-delete">Delete this review</span>
+										</div>
+										<p id="session-review">{{{lookup session_review 'review'}}}</p>
+									{{else}}
+										<!-- If session owner has not given a review -->
+										<p id="review-placeholder">You have not given this item a review.</p>
+									{{/if}}
+								</div>
+							</div>
+						</div>
+
+						<!-- Form for sending review input -->
+						<form id="input" name="input">
+							<input type="text" id="input-rating" name="input-rating" class="hidden" val="">
+							<div id="input-stars" class="stars noselect hidden"> <!-- Action will be set alongside back-end -->
+								Item Rating:
+								<span class="fa fa-star unchecked" style="cursor: pointer"></span>
+								<span class="fa fa-star unchecked" style="cursor: pointer"></span>
+								<span class="fa fa-star unchecked" style="cursor: pointer"></span>
+								<span class="fa fa-star unchecked" style="cursor: pointer"></span>
+								<span class="fa fa-star unchecked" style="cursor: pointer"></span>
+							</div>
+							<textarea form="input" id="input-review" name="input-review" class="long-input minimized" placeholder="Add a review..." onKeyup="enable_submit()"></textarea>
+							<div style="text-align: center">
+								<!-- Submit button for new review -->
+								<input type="button" value="Submit" id="submit-new" class="clickable-disabled noselect hidden" disabled="true">
+								<!-- Submit button for edit review -->
+								<input type="button" value="Apply" id="submit-edit" class="clickable noselect hidden">
+							</div>
+						</form>
+					{{else}}
+						<div id="input-placeholder">
+							You must own this item to add a review.
+						</div>
+					{{/if}}
+				{{/if}}
+
+				<!-- Review from other users -->
+				<div id="reviews">
+					{{#if reviews}}
+						{{#each reviews}}
+							<div class="box-dark clearfix">
+								<img class="user-image" src="{{img}}">
+								<div class="user-details">
+									<a href="../user/{{username}}">{{displayname}}</a>
+									<p>{{rating}}/5 stars</p>
+								</div>
+								<p class="review">{{{review}}}</p>
+							</div>
+						{{/each}}
+					<!-- No reviews for item -->
+					{{else}}
+						<div id="reviewlist-placeholder">
+							This product currently has no other reviews.
+						</div>
+					{{/if}}
+				</div>
+			</section>
+        </div>
+		
+		<div class="h-spacer"></div>
+
+        <!-- javascript -->
+    	<script type="text/javascript" src="/public/js/script.js"></script>
+        {{#if session_review}}
+        	<script type="text/javascript">
+	        	/* Hides functionality to add a review */
+				$("#input").addClass ("hidden");
+			</script>
+		{{/if}}
+		{{#if user_info}}
+			<script type="text/javascript" src="/public/js/item.js"></script>
+		{{/if}}
+		<script type="text/javascript" src="/public/js/login.js"></script>
+		<script type="text/javascript" src="/public/js/cart.js"></script>
+    </body>
+</html>

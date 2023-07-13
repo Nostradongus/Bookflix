@@ -1,0 +1,167 @@
+/* Item Listing */
+/* Item Listing - left side
+	- Item image
+	- Item interaction (favorite, cart)
+*/
+#item-left {
+	width: 256px;
+	float: left;
+}
+
+#item-left img {
+	display: block;
+	width: 256px;
+	float: left;
+	margin-bottom: 12px;
+	object-fit: cover;
+}
+
+.item-button {
+	width: 240px;
+	margin: 4px 8px;
+	float: left;
+	clear: left;
+	font-size: 24px;
+}
+
+/* Item Listing - right side
+	- Item details
+*/
+#item-right {
+	margin-left: 288px;
+}
+
+#name {
+	font-size: 32px;
+	line-height: 1;
+}
+
+#item-price {
+	font-size: 24px;
+	line-height: 1;
+}
+
+#information {
+	margin-bottom: 8px;
+	font-size: 16px;
+	line-height: 20px;
+}
+
+#information span {
+	display: block;
+}
+
+#summary {
+	font-family: 'Bebas Neue Pro';
+	font-size: 24px;
+}
+
+/* Reviews */
+/* Session owner review */
+#session-review-box {
+	width: 90%;
+	margin: auto;
+	margin-bottom: 16px;
+}
+
+#session-review, #review-placeholder {
+	white-space: pre-wrap;
+	font-family: 'Bebas Neue Pro';
+	margin: 0px;
+	font-size: 16px;
+}
+
+.stars {
+	margin-bottom: 4px;
+}
+
+.unchecked {
+	color: black;
+}
+
+/* Review manipulation */
+#toggle-edit, #toggle-delete {
+	margin-left: 4px;
+	font-size: 16px;
+}
+
+#toggle-delete:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* Review input */
+#input-placeholder {
+	width: 85%;
+	padding: 4px 8px;
+	margin: 16px auto;
+	text-align: center;
+	font-size: 24px;
+	line-height: 1;
+}
+
+#input {
+	width: 85%;
+	padding: 4px 8px;
+	margin: 16px auto;
+	background-color: #222222;
+	border: 2px solid #333333;
+	line-height: 1;
+}
+
+.long-input {
+	width: 100%;
+	height: 256px;
+	background-color: #444444;
+	border: 1px solid #333333;
+	font-family: 'Bebas Neue Pro';
+	color: white;
+	resize: none;
+}
+
+.minimized {
+	height: 24px;
+}
+
+#submit-new, #submit-edit {
+	width: 48px;
+	margin: auto;
+	margin-top: 4px;
+}
+
+/* User reviews */
+#reviews {
+	min-height: 0px;
+	max-height: 512px;
+	overflow-y: auto;
+}
+
+#reviewlist-placeholder {
+	margin-top: 32px;
+	font-size: 24px;
+	text-align: center;
+}
+
+.user-image {
+	width: 48px;
+	height: 48px;
+	display: block;
+	object-fit: cover;
+	float: left;
+}
+
+.user-details {
+	font-family: 'Bebas Neue Pro';
+	font-size: 20px;
+	margin: 0px;
+	margin-left: 64px;
+	line-height: 1;
+}
+
+.review {
+	white-space: pre-wrap;
+	font-family: 'Bebas Neue Pro';
+	margin: 0px;
+	margin-top: 16px;
+	font-size: 16px;
+}

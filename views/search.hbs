@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- title of webpage -->
+        <title> Bookflix </title>
+
+        <!-- meta information -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- tab icon -->
+        <link rel="icon" type="image/png" href="/public/images/icons/tab-icon.png">
+
+        <!-- css files -->
+        <link rel="stylesheet" type="text/css" href="/public/css/style1.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/hover-effects.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/style2.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/search.css">
+
+        <!-- Font Awesome icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+        <!-- Bootstrap library -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- BY ORDER OF FUNCTIONING -->
+        <!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Popper.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        
+        <!-- Bootstrap JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </head>
+
+    <body class="main-body">
+		{{> topbar user=user_info cart_items=cart tPrice=totalPrice}}
+        {{> leftbar}}
+        <!-- page content -->
+        <div id="page-contents">
+			<div id="heading" class="title-break clearfix">
+				Search Results for "{{query}}" ({{count}} Results)
+				<div id="filter-dropdown">
+					Filter by:
+					<select name="filter" id="filter" onChange="set_filter()">
+						<option value="">All</option>
+						<option value="book">Books</option>
+						<option value="movie">Movies</option>
+						<option value="user">Users</option>
+					</select>
+				</div>
+			</div>
+			<div class="padded">
+				{{#each books}}
+					<div class="book box-dark clearfix">
+						<img id="item-image" src="{{img}}">
+						<a href="/item/{{id}}">{{title}}</a>
+						<p id="information">
+							{{type}}<br>
+							{{avgrate}}/5.0 ({{reviews}} Reviews)<br>
+							{{favorites}} Favorites
+					</div>
+				{{/each}}
+
+				{{#each movies}}
+					<div class="movie box-dark clearfix">
+						<img id="item-image" src="{{img}}">
+						<a href="/item/{{id}}">{{title}}</a>
+						<p id="information">
+							{{type}}<br>
+							{{avgrate}}/5.0 ({{reviews}} Reviews)<br>
+							{{favorites}} Favorites
+					</div>
+				{{/each}}
+
+				{{#each users}}
+					<div class="user box-dark clearfix">
+						<img id="user-image" src="{{img}}">
+						<a href="/user/{{username}}">{{displayname}}</a>
+						<p id="information">
+							Joined {{joindate}}<br>
+							{{reviews}} Reviews
+					</div>
+				{{/each}}
+			</div>
+        </div>
+		
+		<div class="h-spacer"></div>
+
+        <!-- javascript -->
+    	<script type="text/javascript" src="/public/js/script.js"></script>
+		<!-- Local javascript -->
+        <script type="text/javascript">
+			// sets search filter
+			function set_filter () {
+				var element = document.getElementById ("filter");
+				switch (element.value) {
+					case "book":
+						visible = document.getElementsByClassName ("book");
+						break;
+					case "movie":
+						visible = document.getElementsByClassName ("movie");
+						break;
+					case "user":
+						visible = document.getElementsByClassName ("user");
+						break;
+					default:
+						visible = document.getElementsByClassName ("box-dark");
+				}
+				
+				hidden = document.getElementsByClassName ("box-dark");
+				for (var i = 0; i < hidden.length; i++)
+					hidden[i].style.display = "none";
+				for (var i = 0; i < visible.length; i++)
+					visible[i].style.display = "block";
+			}
+		</script>	
+		<script type="text/javascript" src="/public/js/login.js"></script>
+		<script type="text/javascript" src="/public/js/cart.js"></script>
+    </body>
+</html>

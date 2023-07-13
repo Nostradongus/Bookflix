@@ -1,0 +1,44 @@
+#profile-pic {
+	width: 192px;
+	height: 192px;
+	margin-bottom: 8px;
+}
+
+#delete-button {
+	width: 128px;
+	margin: auto;
+	margin-top: 16px;
+}
+
+#delete-confirm {
+	width: 480px;
+	padding: 16px 16px;
+	margin: auto;
+	margin-bottom: 32px;
+	border: 1px solid #555555;
+}
+
+#delete-confirm label {
+	margin: 0px;
+	vertical-align: center;
+	font-size: 20px;
+	width: 30%;
+}
+
+#username-confirm {
+	margin: 4px 0px;
+	width: 65%;
+	background-color: #333333;
+	border: 0px;
+	font-family: 'Bebas Neue Pro';
+	color: white;
+}
+
+#password-confirm {
+	margin: 4px 0px;
+	width: 65%;
+	background-color: #333333;
+	border: 0px;
+	font-family: 'Bebas Neue Pro';
+	color: white;
+}

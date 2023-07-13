@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- title of webpage -->
+        <title> Bookflix </title>
+
+        <!-- meta information -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- tab icon -->
+        <link rel="icon" type="image/png" href="/public/images/icons/tab-icon.png">
+
+        <!-- css files -->
+        <link rel="stylesheet" type="text/css" href="/public/css/style1.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/hover-effects.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/style2.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/delete-confirmation.css">
+
+        <!-- Font Awesome icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+        <!-- Bootstrap library -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- BY ORDER OF FUNCTIONING -->
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Popper.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        
+        <!-- Bootstrap JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </head>
+
+    <body class="main-body">
+        <!-- navigation bar (partials) -->
+        {{> topbar user=user_info cart_items=cart tPrice=totalPrice}}
+        <!-- left menu (genre buttons and filter) -->
+        {{> leftbar}}
+
+        <!-- page content -->
+        <div id="page-contents">
+            <div class="h-spacer"></div>
+			<div class="noselect" id="page-title">
+				<img id="nav-icon" src="/public/images/icons/title-icon.png" width="96px" height="96px">
+                Bookflix
+			</div>
+			
+			<div id="notice">
+				Your profile {{displayname}} has successfully been deleted.
+			</div>
+			
+			<a href="/" style="text-decoration: none">
+				<div id="home-button" class="clickable noselect">Return to main page</div>
+			</a>
+        </div>
+		
+		<div class="h-spacer"></div>
+
+        <!-- javascript -->
+        <script type="text/javascript" src="/public/js/script.js"></script>
+    </body>
+</html>

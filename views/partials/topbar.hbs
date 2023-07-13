@@ -1,0 +1,93 @@
+<div id="top-menu">
+    <!-- navigation bar title -->
+    <a id="nav-title" class="hvr-grow" href="/">
+        <img id="nav-icon" src="/public/images/icons/title-icon.png" width="41px" height="41px">
+        Bookflix
+    </a>
+    <!-- navigation links -->
+    <div id="nav-links">
+        <a class="nav-link hvr-grow" href="/" style="margin-top: 12.5px"> Home </a>
+        <a id="popular-items" class="nav-link hvr-grow" style="margin-top: 12.5px" href="/list_browse/popular"> What's Popular </a>
+        <a id="new-items" class="nav-link hvr-grow" style="margin-top: 12.5px" href="/list_browse/new"> Newest Releases </a>
+    </div>
+
+    <!-- search bar -->
+    <form method="GET" id="nav-search-bar" action="/search">
+        <input class="hvr-border-fade2" type="text" placeholder="SEARCH AN ITEM OR USER" name="search">
+        <button type="submit" class="hvr-border-fade2"><i class="fa fa-search"></i></button>
+    </form>
+
+    <!-- sign-in drop-down / account profile and cart -->
+    <div id="nav-right">
+        <!-- if a user logs in -->
+        {{#if user}}
+            <!-- shopping cart icon button to trigger modal-->
+            <button id="cart-icon" class="hvr-grow" data-toggle="modal" data-target="#cart-trigger-modal">
+                <i class="fa fa-shopping-cart"></i>
+            </button>
+            <!-- modal to show cart items -->
+            <div class="modal fade" id="cart-trigger-modal" role="dialog" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div id="cart-modal" class="modal-content">
+                        <div class="modal-header">
+                            <p id="cart-modal-header"> Your Cart </p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="close-btn hvr-grow">&times;</span>
+                            </button>
+                        </div>
+                        <!-- cart items-->
+                        <div id="cart" class="modal-body">
+                            <!-- cart items to be inserted here through js -->
+                            {{#if cart_items}}
+                                {{#each cart_items}}
+                                <div class="cart-item">
+                                    <img class="cart-item-left" src="{{img}}">
+                                    <div class="cart-item-mid">
+                                        <h4> {{type}} </h4>
+                                        <h4> {{title}} </h4>
+                                    </div>
+                                    <div class="cart-item-right">
+                                        <h4> ₱ {{price}} </h4>
+                                        <button id="{{id}}" class="cart-item-btn hvr-border-fade"> Remove </button>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            {{/if}}
+                        </div>
+                        <div class="modal-footer cart-modal-bot">
+                            {{#if tPrice}}
+                                <h2 id="cart-total-price">Total: ₱ {{tPrice}}</h2>
+                            {{else}}
+                                <h2 id="cart-total-price">Total: ₱ 0.00</h2>
+                            {{/if}}
+
+                            <!-- disabled when there are no cart items in the list yet -->
+                            <a id="checkout-btn" class="hvr-border-fade" href="/checkout"> Proceed to Checkout </a>
+                        </div>
+                        <h4 id="cartError" style="color: rgb(228, 61, 61); text-align: center"> <!-- if no cart items, display error message --> </h4>
+                    </div>
+                </div>
+            </div>
+            <!-- account button -->
+            <div id="nav-profile-dropdown">
+                <button data-toggle="dropdown" id="account-drop-btn" class="hvr-float-shadow" type="button">
+                    Your Account
+                    <i class="fa fa-caret-down hvr-sink"></i>
+                </button>
+                <div id="account-btns" class="dropdown-menu">
+                    <a class="account-btn hvr-border-fade" href="/user/{{user.username}}"> View Profile </a>
+                    <a id="favorite-items" class="account-btn hvr-border-fade" href="/list_browse/{{user.username}}"> Favorite Items </a>
+                    <a class="account-btn hvr-border-fade" href="/logout"> Log Out </a>
+                </div>
+            </div>
+            </div>
+        {{else}}
+            <button id="sign-in-btn" class="hvr-border-fade" type="button">
+                <a href="/login"> Sign in </a>
+            </button>
+        {{/if}}
+    </div>
+</div>
+
+<!-- extra horizontal space for elements below -->
+<div class="h-spacer"> &nbsp; </div>
